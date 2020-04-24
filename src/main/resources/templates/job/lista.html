@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+        <script th:src="@{/js/jquery-3.4.1.slim.min.js}"></script>
+        <script th:src="@{/js/popper.min.js}"></script>
+        <script th:src="@{/js/bootstrap.min.js}"></script>
+        <title>lista de trabajos</title>
+    </head>
+    <body class="container">
+        <h2>Lista de trabajos</h2>
+        <a class="btn btn-primary mt-4 mb-4" th:href="@{'/job/new'}">Nuevo Trabajo</a>
+        <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+        <table class="table table-sm">
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Rango de salarios</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr th:each="job, info : ${lista}">
+                <td th:text="${info.index + 1}"></td>
+                <td th:text="${job.jobTitle}"></td>
+                <td th:text="|${job.minSalary} a ${job.maxSalary}|"></td>
+                <td><a class="btn btn-primary" th:href="@{'/job/edit' + '?id=' + ${job.jobId}}">Editar</a></td>
+                <td><a class="btn btn-danger" th:href="@{'/job/delete' + '?id=' + ${job.jobId}}">Borrar</a></td>
+            </tr>
+        </table>
+    </body>
+</html>

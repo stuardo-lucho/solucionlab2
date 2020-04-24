@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+        <script th:src="@{/js/jquery-3.4.1.slim.min.js}"></script>
+        <script th:src="@{/js/popper.min.js}"></script>
+        <script th:src="@{/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+        <div class="text-center mt-4 mb-lg-5">
+            <h1>Gestión de HR-SW2</h1>
+        </div>
+        <div class="container-sm">
+            <div class="card-deck">
+                <div class="card shadow-sm h-100">
+                    <img th:src="@{img/Git branch meme.jpg}" class="card-img-top" style="height: 232px;">
+                    <div class="card-body text-center">
+                        <a class="btn btn-primary" th:href="@{/job}">Ir a la gestión de trabajos</a>
+                    </div>
+                </div>
+                <div class="card h-100">
+                    <img th:src="@{img/git meme 2.jpg}" class="card-img-top" style="height: 232px; padding: 7px;">
+                    <div class="card-body text-center">
+                        <a class="btn btn-success" th:href="@{/department}">Ir a la gestión de departamentos</a>
+                    </div>
+                </div>
+                <div class="card h-100">
+                    <img th:src="@{img/git meme 3.jpg}" class="card-img-top" style="height: 232px; padding: 7px;">
+                    <div class="card-body text-center">
+                        <a class="btn btn-info" th:href="@{/employee}">Ir a la gestión de empleados</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+

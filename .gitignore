@@ -1,0 +1,11 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+.idea/*
+!.idea/compiler.xml
+!.idea/encodings.xml
+!.idea/misc.xml
+!.idea/modules.xml
