@@ -49,8 +49,7 @@ public class JobController {
             if (opt.isPresent()) {
                 Department d = opt.get();
                 String newId = d.getDepartmentShortName() + "_" + shortName.toUpperCase();
-                Optional<Job> optJob = jobRepository.findById(newId);
-                if (optJob.isPresent()) {
+                if (jobRepository.existsById(newId)) {
                     attr.addFlashAttribute("msg", "Ya existe un nombre corto para el departmento seleccionado");
                     return "redirect:/job/new";
                 } else {
@@ -83,7 +82,7 @@ public class JobController {
     }
 
     @GetMapping("/delete")
-    public String editarForm(@RequestParam("id") String jobId,
+    public String borrar(@RequestParam("id") String jobId,
                              RedirectAttributes attr){
         jobRepository.deleteById(jobId);
         attr.addFlashAttribute("msg", "Trabajo borrado exitosamente");
