@@ -45,7 +45,7 @@ public class DepartmentController {
     }
 
     @PostMapping("/save")
-    public String guardarJobs(Department department,
+    public String guardar(Department department,
                               RedirectAttributes attr) {
 
         if (department.getDepartmentId() == 0) {
