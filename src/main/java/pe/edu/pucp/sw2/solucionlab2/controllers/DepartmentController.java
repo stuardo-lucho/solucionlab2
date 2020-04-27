@@ -34,6 +34,7 @@ public class DepartmentController {
     @GetMapping(value = {"", "/list"})
     public String lista(Model model) {
         model.addAttribute("lista", departmentRepository.findAll());
+        model.addAttribute("listaLocations",locationRepository.findAll());
         return "department/lista";
     }
 

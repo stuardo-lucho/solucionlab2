@@ -25,6 +25,7 @@
                 <td th:text="${info.index + 1}"></td>
                 <td th:text="${department.departmentName}">
                 <td th:text="${department.managerId != null ?department.managerId:'Sin Jefe'}"></td>
+                <td th:each="loc : ${listaLocations}" th:if="${loc.locationId == department.locationId}" th:text="${loc.city}">
                 <td th:text="${department.locationId}"></td>
                 <td><a class="btn btn-primary" th:href="@{'/department/edit' + '?id=' + ${department.departmentId}}">Editar</a></td>
                 <td><a class="btn btn-danger" th:href="@{'/department/delete' + '?id=' + ${department.departmentId}}">Borrar</a></td>

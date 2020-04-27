@@ -39,7 +39,7 @@ public class JobController {
     }
 
     @PostMapping("/save")
-    public String guardarJobs(Job job,
+    public String guardarJobs(Job job, Model model,
                               @RequestParam(name = "departmentId",required = false) Integer departmentId,
                               @RequestParam(name = "shortName",required = false) String shortName,
                               RedirectAttributes attr) {
@@ -64,9 +64,17 @@ public class JobController {
             }
         }else{
             //actualizo
-            jobRepository.save(job);
-            attr.addFlashAttribute("msg", "Trabajo actualizado exitosamente");
-            return "redirect:/job";
+            if(job.getMinSalary() > 0 && job.getMaxSalary() >0) {
+                jobRepository.save(job);
+                attr.addFlashAttribute("msg", "Trabajo actualizado exitosamente");
+                return "redirect:/job";
+            }else{
+                Optional<Job> opt = jobRepository.findById(job.getJobId());
+                job = opt.get();
+                model.addAttribute("job",job);
+                model.addAttribute("msgError",true);
+                return "job/editForm";
+            }
         }
     }
 

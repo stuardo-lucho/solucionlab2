@@ -30,10 +30,10 @@
                 <td th:text="|${employee.firstName} ${employee.lastName}|">
                 <td th:text="${employee.email}">
                 <td th:text="${employee.phoneNumber}">
-                <td th:text="${employee.jobId}">
+                <td th:each="job : ${listaJobs}" th:if="${job.jobId == employee.jobId}" th:text="${job.jobTitle}">
                 <td th:text="${employee.salary}">
                 <td th:text="${employee.managerId==null?'No tiene jefe':employee.managerId}">
-                <td th:text="${employee.departmentId}">
+                <td th:each="depa : ${listaDepa}" th:if="${depa.departmentId == employee.departmentId}" th:text="${depa.departmentName}">
                 <td><a class="btn btn-primary" th:href="@{'/employee/edit' + '?id=' + ${employee.employeeId}}">Editar</a></td>
                 <td><a class="btn btn-danger" th:href="@{'/employee/delete' + '?id=' + ${employee.employeeId}}">Borrar</a></td>
             </tr>

@@ -11,6 +11,7 @@
     <body class="container">
         <h2>Editar trabajo</h2>
         <hr/>
+        <div th:if="${msgError != null}" class="alert alert-danger" role="alert">Los salarios no pueden ser negativos</div>
         <form method="post" th:action="@{'/job/save'}">
             <input type="hidden" name="jobId" th:value="${job.jobId}" />
             <div class="form-group">
