@@ -11,8 +11,16 @@
     <body class="container">
         <h2>Lista de trabajos</h2>
         <a class="btn btn-primary mt-4 mb-4" th:href="@{'/job/new'}">Nuevo Trabajo</a>
+        <form class="input-group mb-lg-3" method="post" th:action="@{'/job/search'}">
+            <input type="text" class="form-control" placeholder="Texto a buscar" name="search">
+            <div class="input-group-append">
+                <button class="btn btn-outline-primary ml-2 mr-2" type="submit">Buscar</button>
+                <a th:href="@{'/job'}" class="btn btn-outline-danger">Limpiar</a>
+            </div>
+        </form>
         <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
-        <table class="table table-sm">
+        <div th:if="${lista.size() == 0}" class="alert alert-success" role="alert">No hay resultados para la búsqueda</div>
+        <table class="table table-sm" th:if="${lista.size() != 0}">
             <tr>
                 <th>#</th>
                 <th>Nombre</th>

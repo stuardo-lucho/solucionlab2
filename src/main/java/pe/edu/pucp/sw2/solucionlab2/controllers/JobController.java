@@ -13,6 +13,7 @@ import pe.edu.pucp.sw2.solucionlab2.entities.Job;
 import pe.edu.pucp.sw2.solucionlab2.repositories.DepartmentRepository;
 import pe.edu.pucp.sw2.solucionlab2.repositories.JobRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -88,6 +89,12 @@ public class JobController {
         attr.addFlashAttribute("msg", "Trabajo borrado exitosamente");
         return "redirect:/job";
 
+    }
+
+    @PostMapping("/search")
+    public String buscar(@RequestParam("search") int salario,Model model){
+        model.addAttribute("lista", jobRepository.buscarSalarioMinaMax(salario));
+        return "job/lista";
     }
 
 }
